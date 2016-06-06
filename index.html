@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Turing Machine Simulator</title>
+	<link rel="stylesheet" href="assets/vendor/foundation.min.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+	<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+	<script type="text/javascript">
+		// creating namespace for coffeescripts
+		var Turing = {};
+		var Parser = {};
+	</script>
+</head>
+
+<body>
+	<!-- Info Part -->
+	<section class="top-bar">
+		<div class="row all-center">
+			<div class="small-2 small-centered columns">
+				<img class="logo" src="assets/images/tm_logo.png">
+			</div>
+		</div>
+		<div class="line">
+			<hr>
+		</div>
+		<div class="row">
+			<div class="small-11 small-centered medium-8">
+				<div class="info-holder">
+					<h3>Welcome to my Turing Machine Simulator!</h3>
+					<p>What is a Turing Machine?</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultrices condimentum elementum. Sed a rhoncus urna. Aliquam erat volutpat. Aliquam quis accumsan eros, a hendrerit lacus. Integer arcu sem, euismod et lacus a, ultrices suscipit nunc. Donec aliquam odio eget feugiat feugiat. Fusce eget commodo felis, vitae pretium velit. Vivamus lobortis quam ac nunc sagittis mollis.
+
+Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue risus faucibus quis. Integer ut velit semper, tincidunt enim tristique, fringilla massa. Cras sit amet pellentesque lacus, quis blandit eros. Nullam elit mauris, tristique a purus a, iaculis euismod dolor. Morbi leo leo, dapibus eget dui nec, porta efficitur est. Aliquam arcu est, accumsan sit amet condimentum sed, euismod suscipit arcu.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<!-- Working Part -->
+	<section class="working">
+		<div class="row">
+			<div class="small-12 small-centered medium-8 tm-band columns">
+				<p>Check out your progress:</p>
+				<div class="expanded plc" href="#">PLACEHOLDER</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 small-centered medium-8 columns">
+				<div class="row small-collapse">
+					<!-- buttons -->
+					<div class="small-6 columns">
+						<a class="expanded button run-button" id="run-button" href="#">RUN</a>
+					</div>
+					<div class="small-6 columns">
+						<a class="expanded button step-button" id="step-button" href="#">STEP</a>
+					</div>
+				</div>	
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="small-12 small-centered medium-8 columns">
+				<div class="row">
+					<div class="small-8 columns">
+						<label class="speed-label" for="speed">
+							Speed (>= 100 ms):
+						</label>
+					</div>
+					<div class="small-4 columns speed-holder">
+						<input type="text" name="speed" id="speed" placeholder="100">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	
+	<!-- Configuration Part -->
+	<section class="config" id="config">
+		<div class="row">
+			<div class="small-12 small-centered medium-8 columns">
+				<p>The following Turing machine can be formally defined as a 7-tuple M = &#x3008;Q, Γ, b, Σ, δ, q0, F&#x3009;</p>
+				<p>Configure your own machine or use the example:</p>
+				
+				<!-- All States input -->
+				<div class="row">
+					<div class="small-4 columns">
+						<label class="config-label" for="states">
+							<b>Q -> All States</b> (separate with comma):
+						</label>
+					</div>
+					<div class="small-8 columns config-holder">
+						<input type="text" name="states" id="states" placeholder="100">
+					</div>
+				</div>
+				<!-- End All States -->
+				
+				<!-- Alphabet input -->
+				<div class="row">
+					<div class="small-4 columns">
+						<label class="config-label" for="alphabet">
+							<b>Γ -> ALPHABET</b> (separate each with comma):
+						</label>
+					</div>
+					<div class="small-8 columns config-holder">
+						<input type="text" name="alphabet" id="alphabet" placeholder="100">
+					</div>
+				</div>		
+				<!-- End Alphabet -->
+				
+				<!-- Blank symbol input -->
+				<div class="row">
+					<div class="small-4 columns">
+						<label class="config-label" for="blank">
+							<b>b -> Blank Symbol</b> (one symbol):
+						</label>
+					</div>
+					<div class="small-8 columns config-holder">
+						<input type="text" name="blank" id="blank" placeholder="100">
+					</div>
+				</div>
+				<!-- End Blank Symbol -->
+		
+				<!-- Input symbols input -->
+				<div class="row">
+					<div class="small-4 columns">
+						<label class="config-label" for="input">
+							<b>Σ -> Input symbols</b> (separate with comma):
+						</label>
+					</div>
+					<div class="small-8 columns config-holder">
+						<input type="text" name="input" id="input" placeholder="100">
+					</div>
+				</div>
+				<!-- End Input symbols -->
+								
+				<!-- Initial state input -->
+				<div class="row">
+					<div class="small-4 columns">
+						<label class="config-label" for="initial">
+							<b>q0 -> Initial State</b> (one symbol):
+						</label>
+					</div>
+					<div class="small-8 columns config-holder">
+						<input type="text" name="initial" id="initial" placeholder="100">
+					</div>
+				</div>
+				<!-- End Initial State -->
+
+				<!-- Final states input -->
+				<div class="row">
+					<div class="small-4 columns">
+						<label class="config-label" for="final">
+							<b>F -> Final States</b> (separate with comma):
+						</label>
+					</div>
+					<div class="small-8 columns config-holder">
+						<input type="text" name="final" id="final" placeholder="100">
+					</div>
+				</div>
+				<!-- End Final States -->
+				
+				<hr>
+				
+				<!-- Start state table -->
+				<div class="table-describe">
+					<p><b>δ -> Transition function.</b> The transition functions are displayed in the table below:</p>
+					
+				</div>
+				<table border="1" class="tm-table" id="single-band-basic">
+					<thead>
+						<th>q1</th>
+						<th>q2</th>
+						<th>q3</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1, 0, R</td>
+							<td>1, 0, R</td>
+							<td>1, 0, R</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+	
+	<script src="turing.js"></script>
+</body>
+</html>

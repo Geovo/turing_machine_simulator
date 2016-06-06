@@ -1,0 +1,140 @@
+/*====================================
+## Variables and mixins
+====================================*/
+
+$main-dark: #444444;
+$main-red: #FF2255;
+$main-white: #EEEEDD;
+$main-blue: #559999;
+
+/*====================================
+## Global Styles, Typography and Colors
+====================================*/
+
+body {
+	background: $main-white;
+	color: $main-dark;
+	font-family: "Raleway", "Montserrat", sans-serif;
+	font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif;
+}
+
+/*====================================
+## Top Section Styles
+====================================*/
+.top-bar {
+	font-size: 25px;
+	line-height: 35px;
+	padding: 10px 0 70px;
+}
+
+.all-center * {
+	text-align: center;
+}
+
+.logo {
+	max-height: 90px;
+}
+
+.logo-text {
+	letter-spacing: 3px;
+	font-weight: 100;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1em;
+}
+
+.line {
+	width: 40%;
+	margin: 0 auto;
+}
+
+.info-holder {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+/*====================================
+## Working Section Styles
+====================================*/
+.working {
+	background: $main-dark;
+	color: $main-white;
+	padding: 100px 0;
+}
+
+.run-button {
+	background: $main-red;
+	color: $main-dark;
+	&:hover, &:focus {
+		background: $main-blue;
+		color: $main-dark;
+	}
+}
+
+.step-button {
+	background: $main-white;
+	color: $main-dark;
+	&:hover, &:focus {
+		background: $main-blue;
+		color: $main-dark;
+	}
+}
+
+.tm-band {
+	padding: 0;
+	a {
+		background: $main-blue;	
+	}
+}
+
+.speed-label {
+	font-size: 20px;
+	color: $main-white;
+	text-align: right;
+}
+
+.speed {
+	width: 100%;
+}
+
+.speed-holder {
+	padding-right: 0;
+}
+
+/* placeholder styles */
+.plc {
+	text-align: center;
+	height: 200px;
+	font-size: 2em;
+	background: $main-blue;
+	line-height: 200px;
+	margin-bottom: 25px;
+}
+
+/*====================================
+## Configuration Section Styles
+====================================*/
+
+.config {
+	padding: 80px 0;
+}
+
+.config-label {
+	b {
+		text-transform: uppercase;
+	}
+}
+
+.tm-table {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	td {
+		padding: 3px 10px;
+		font-size: 18px;
+		line-height: 24px;
+		height: 24px;
+	}
+}

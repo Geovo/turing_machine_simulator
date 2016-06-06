@@ -1,0 +1,109 @@
+/*====================================
+## Variables and mixins
+====================================*/
+/*====================================
+## Global Styles, Typography and Colors
+====================================*/
+body {
+  background: #EEEEDD;
+  color: #444444;
+  font-family: "Raleway", "Montserrat", sans-serif;
+  font-size: 14px; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif; }
+
+/*====================================
+## Top Section Styles
+====================================*/
+.top-bar {
+  font-size: 25px;
+  line-height: 35px;
+  padding: 10px 0 70px; }
+
+.all-center * {
+  text-align: center; }
+
+.logo {
+  max-height: 90px; }
+
+.logo-text {
+  letter-spacing: 3px;
+  font-weight: 100;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em; }
+
+.line {
+  width: 40%;
+  margin: 0 auto; }
+
+.info-holder {
+  font-size: 18px;
+  font-weight: 500; }
+
+/*====================================
+## Working Section Styles
+====================================*/
+.working {
+  background: #444444;
+  color: #EEEEDD;
+  padding: 100px 0; }
+
+.run-button {
+  background: #FF2255;
+  color: #444444; }
+  .run-button:hover, .run-button:focus {
+    background: #559999;
+    color: #444444; }
+
+.step-button {
+  background: #EEEEDD;
+  color: #444444; }
+  .step-button:hover, .step-button:focus {
+    background: #559999;
+    color: #444444; }
+
+.tm-band {
+  padding: 0; }
+  .tm-band a {
+    background: #559999; }
+
+.speed-label {
+  font-size: 20px;
+  color: #EEEEDD;
+  text-align: right; }
+
+.speed {
+  width: 100%; }
+
+.speed-holder {
+  padding-right: 0; }
+
+/* placeholder styles */
+.plc {
+  text-align: center;
+  height: 200px;
+  font-size: 2em;
+  background: #559999;
+  line-height: 200px;
+  margin-bottom: 25px; }
+
+/*====================================
+## Configuration Section Styles
+====================================*/
+.config {
+  padding: 80px 0; }
+
+.config-label b {
+  text-transform: uppercase; }
+
+.tm-table {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300; }
+  .tm-table td {
+    padding: 3px 10px;
+    font-size: 18px;
+    line-height: 24px;
+    height: 24px; }
+
+/*# sourceMappingURL=style.css.map */

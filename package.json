@@ -1,0 +1,32 @@
+{
+  "name": "turing_machine_simulator",
+  "version": "1.0.0",
+  "description": "A website that simulates a turing machine.",
+  "main": "turing.js",
+  "scripts": {
+    "test": "mocha tests/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Geovo/turing_machine_simulator.git"
+  },
+  "keywords": [
+    "turing",
+    "machine",
+    "simulator"
+  ],
+  "author": "Kristian Voshchepynets",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Geovo/turing_machine_simulator/issues"
+  },
+  "homepage": "https://github.com/Geovo/turing_machine_simulator#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.5.3"
+  }
+}
