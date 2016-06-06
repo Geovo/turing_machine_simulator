@@ -97,13 +97,38 @@ h1, h2, h3, h4, h5, h6 {
 .config-label b {
   text-transform: uppercase; }
 
+.table-holder {
+  padding: 0;
+  overflow: auto; }
+  .table-holder table thead {
+    height: 28px;
+    line-height: 28px;
+    font-size: 20px; }
+    .table-holder table thead.double-height {
+      height: 56px;
+      line-height: 57px; }
+
 .tm-table {
+  min-width: 100%;
   font-family: "Montserrat", sans-serif;
   font-weight: 300; }
-  .tm-table td {
-    padding: 3px 10px;
+  .tm-table td div {
+    text-align: center;
     font-size: 18px;
-    line-height: 24px;
-    height: 24px; }
+    line-height: 78px;
+    min-height: 78px;
+    min-width: 100px; }
+
+.tm-desc-table {
+  min-width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300; }
+  .tm-desc-table tbody td {
+    text-align: center;
+    font-size: 18px;
+    line-height: 78px; }
+
+.states-table {
+  overflow-x: scroll; }
 
 /*# sourceMappingURL=style.css.map */

@@ -128,13 +128,50 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+.table-holder {
+	padding: 0;
+	overflow: auto;
+	table {
+		thead {
+			height: 28px;
+			line-height: 28px;
+			font-size: 20px;
+			&.double-height {
+				height: 56px;
+				line-height: 57px;
+			}
+		}
+	}
+}
+
 .tm-table {
+	min-width: 100%;
 	font-family: "Montserrat", sans-serif;
 	font-weight: 300;
 	td {
-		padding: 3px 10px;
-		font-size: 18px;
-		line-height: 24px;
-		height: 24px;
+		div {
+			text-align: center;
+			font-size: 18px;
+			line-height: 78px;
+			min-height: 78px;
+			min-width: 100px;
+		}
 	}
+}
+
+.tm-desc-table {
+	min-width: 100%;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	tbody {
+		td {
+			text-align: center;
+			font-size: 18px;
+			line-height: 78px;
+		}
+	}
+}
+
+.states-table {
+	overflow-x: scroll;
 }
