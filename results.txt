@@ -1,4 +1,34 @@
-
-
-[92m [0m[32m 0 passing[0m[90m (1ms)[0m
-
+[31m>> [39mMocha exploded!
+[31m>> [39mReferenceError: Parser is not defined[31m
+>> [39m  at Object.<anonymous> (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/turing.js:1:63)[31m
+>> [39m  at Module._compile (module.js:434:26)[31m
+>> [39m  at Object.Module._extensions..js (module.js:452:10)[31m
+>> [39m  at Module.load (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/coffee-script/lib/coffee-script/register.js:45:36)[31m
+>> [39m  at Function.Module._load (module.js:310:12)[31m
+>> [39m  at Module.require (module.js:365:17)[31m
+>> [39m  at require (module.js:384:17)[31m
+>> [39m  at Object.<anonymous> (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/tests/turing.js:2:16)[31m
+>> [39m  at Module._compile (module.js:434:26)[31m
+>> [39m  at Object.Module._extensions..js (module.js:452:10)[31m
+>> [39m  at Module.load (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/coffee-script/lib/coffee-script/register.js:45:36)[31m
+>> [39m  at Function.Module._load (module.js:310:12)[31m
+>> [39m  at Module.require (module.js:365:17)[31m
+>> [39m  at require (module.js:384:17)[31m
+>> [39m  at /Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/mocha/lib/mocha.js:220:27[31m
+>> [39m  at Array.forEach (native)[31m
+>> [39m  at Mocha.loadFiles (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/mocha/lib/mocha.js:217:14)[31m
+>> [39m  at MochaWrapper.run (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt-mocha-test/tasks/lib/MochaWrapper.js:51:15)[31m
+>> [39m  at /Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt-mocha-test/tasks/mocha-test.js:86:20[31m
+>> [39m  at capture (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt-mocha-test/tasks/mocha-test.js:33:5)[31m
+>> [39m  at Object.<anonymous> (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt-mocha-test/tasks/mocha-test.js:81:5)[31m
+>> [39m  at Object.<anonymous> (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt/lib/grunt/task.js:255:15)[31m
+>> [39m  at Object.thisTask.fn (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt/lib/grunt/task.js:73:16)[31m
+>> [39m  at Object.<anonymous> (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt/lib/util/task.js:294:30)[31m
+>> [39m  at Task.runTaskFn (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt/lib/util/task.js:244:24)[31m
+>> [39m  at Task.<anonymous> (/Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt/lib/util/task.js:293:12)[31m
+>> [39m  at /Users/pentahack/Desktop/me.organize/become_better/online_presence/cool_projects/turing_machine/node_modules/grunt/lib/util/task.js:220:11[31m
+>> [39m  at doNTCallback0 (node.js:408:9)[31m
+>> [39m  at process._tickDomainCallback (node.js:378:13)[31m
+>> [39m  at Function.Module.runMain (module.js:477:11)[31m
+>> [39m  at startup (node.js:118:18)[31m
+>> [39m  at node.js:952:3

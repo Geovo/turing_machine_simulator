@@ -30,6 +30,7 @@
 		<div class="row">
 			<div class="small-11 small-centered medium-8">
 				<div class="info-holder">
+					<p id="test-out"></p>
 					<h3>Welcome to my Turing Machine Simulator!</h3>
 					<p>What is a Turing Machine?</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultrices condimentum elementum. Sed a rhoncus urna. Aliquam erat volutpat. Aliquam quis accumsan eros, a hendrerit lacus. Integer arcu sem, euismod et lacus a, ultrices suscipit nunc. Donec aliquam odio eget feugiat feugiat. Fusce eget commodo felis, vitae pretium velit. Vivamus lobortis quam ac nunc sagittis mollis.
@@ -130,12 +131,12 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 				<!-- Input symbols input -->
 				<div class="row">
 					<div class="small-4 columns">
-						<label class="config-label" for="input">
+						<label class="config-label" for="inputs">
 							<b>Σ -> Input symbols</b> (separate with comma):
 						</label>
 					</div>
 					<div class="small-8 columns config-holder">
-						<input type="text" name="input" id="input" placeholder="100">
+						<input type="text" name="inputs" id="inputs" placeholder="100">
 					</div>
 				</div>
 				<!-- End Input symbols -->
@@ -168,6 +169,10 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 				
 				<hr>
 				
+				<a class="expanded button" id="build-table" href="#">CREATE TABLE</a>
+				
+				<hr>
+				
 				<!-- Start state table -->
 				<div class="table-describe">
 					<p><b>δ -> Transition function.</b> The transition functions are displayed in the table below:</p>
@@ -193,7 +198,7 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 						</table>
 					</div>
 					<div class="small-9 columns table-holder states-table" id="states-table">
-						<table border="1" class="tm-table" id="single-band-basic">
+						<table border="1" class="tm-table" id="state-table">
 							<thead>
 								<tr>
 									<th colspan="1000">States</th>
