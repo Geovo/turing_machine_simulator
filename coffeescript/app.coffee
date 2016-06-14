@@ -51,7 +51,7 @@ click = (id, func) ->
 
 createTable = (e)->
 	e.preventDefault()
-	tm.buildHTML()
+	parser.buildHTML()
 
 makeStep = (e) ->
 	e.preventDefault()

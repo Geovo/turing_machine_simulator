@@ -67,3 +67,7 @@ class Parser.TableParser
 			inp++
 		console.log("transitions: ", @transitions)
 		return @transitions
+	
+	
+	buildHTML: ->
+		console.log "parser builds table"

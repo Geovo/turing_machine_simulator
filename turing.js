@@ -75,6 +75,10 @@ Parser.TableParser = (function() {
     return this.transitions;
   };
 
+  TableParser.prototype.buildHTML = function() {
+    return console.log("parser builds table");
+  };
+
   return TableParser;
 
 })();
@@ -261,7 +265,7 @@ click = function(id, func) {
 
 createTable = function(e) {
   e.preventDefault();
-  return tm.buildHTML();
+  return parser.buildHTML();
 };
 
 makeStep = function(e) {
