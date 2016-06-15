@@ -86,15 +86,16 @@ h1, h2, h3, h4, h5, h6 {
 .tm-band {
 	padding: 0;
 	a {
-		background: $main-blue;	
+		background: $main-blue;
 	}
 }
 
 .speed-label {
-	font-size: 20px;
+	font-size: 1.1em;
 	color: $main-white;
 	text-align: right;
-}
+	line-height: 40px;
+} 
 
 .speed {
 	width: 100%;

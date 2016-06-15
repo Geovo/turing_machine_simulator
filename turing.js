@@ -18,13 +18,21 @@ Parser.TableParser = (function() {
   };
 
   TableParser.prototype.getBasicConfig = function() {
-    var col, currInp, currState, i, inp, inpSymbols, inputsTable, j, k, l, len, len1, len2, len3, nameSpan, ref, row, state, stateNames, t, table, tbodyRows, temp, theads, toState, txt;
-    this.allStates = (this.getValue("states") || "0, 1, 2").split(/\s*,\s*/);
+    var col, currInp, currState, i, inp, inpSymbols, inputsTable, j, k, l, len, len1, len2, len3, nameSpan, ref, ret, row, state, stateNames, t, table, tbodyRows, temp, theads, toState, txt;
+    this.allStates = (this.getValue("states") || "q0, q1, q2").split(/\s*,\s*/);
     this.alpha = (this.getValue("alphabet") || "0, 1, B").split(/\s*,\s*/);
     this.blank = this.getValue("blank") || "B";
     this.inputs = (this.getValue("inputs") || "0, 1, B").split(/\s*,\s*/);
-    this.initial = this.getValue("initial") || [0];
-    this.final = (this.getValue("final") || "2").split(/\s*,\s*/);
+    this.initial = this.getValue("initial") || ["q0"];
+    this.final = (this.getValue("final") || "q2").split(/\s*,\s*/);
+    ret = {
+      states: this.allStates,
+      alpha: this.alpha,
+      blank: this.blank,
+      input: this.inputs,
+      initial: this.initial,
+      final: this.final
+    };
     inpSymbols = [];
     inputsTable = document.getElementById("table-left").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
     for (i = 0, len = inputsTable.length; i < len; i++) {
@@ -56,13 +64,17 @@ Parser.TableParser = (function() {
           this.transitions[currState] = toState;
           continue;
         }
-        txt = txt.split(/\s*,\s*/);
+        if (txt === "-") {
+          t = null;
+        } else {
+          txt = txt.split(/\s*,\s*/);
+          t = {
+            next: txt[0],
+            move: txt[1],
+            write: txt[2]
+          };
+        }
         console.log("txt: ", txt);
-        t = {
-          next: txt[0],
-          move: txt[1],
-          write: txt[2]
-        };
         temp.push(t);
         state = (state + 1) % stateNames.length;
         toState = this.transitions[currState] || {};
@@ -71,12 +83,8 @@ Parser.TableParser = (function() {
       }
       inp++;
     }
-    console.log("transitions: ", this.transitions);
-    return this.transitions;
-  };
-
-  TableParser.prototype.buildHTML = function() {
-    return console.log("parser builds table");
+    ret.transitions = this.transitions;
+    return ret;
   };
 
   return TableParser;
@@ -183,61 +191,93 @@ Turing.TuringMachine = (function() {
     return results;
   };
 
+  TuringMachine.prototype.formatTrans = function(t) {
+    if (t === null) {
+      return "-";
+    }
+    return t.next + ", " + t.move + ", " + t.write;
+  };
+
   TuringMachine.prototype.buildHTML = function() {
-    return console.log("building html");
+    var a, i, j, k, len, len1, len2, out, ref, ref1, ref2, s, tbl;
+    console.log("building html");
+    out = '<thead class="double-height"> <th colspan="1">Input Symbols</th> </thead> <tbody>';
+    tbl = '<thead> <tr> <th colspan="1000">States</th> </tr> <tr>';
+    ref = this.states;
+    for (i = 0, len = ref.length; i < len; i++) {
+      s = ref[i];
+      tbl += "<th><div>" + s + "</div></th>";
+    }
+    tbl += "</tr></thead><tbody>";
+    ref1 = this.alpha;
+    for (j = 0, len1 = ref1.length; j < len1; j++) {
+      a = ref1[j];
+      out += "<tr><td>" + a + "</td></tr>";
+      tbl += "<tr>";
+      ref2 = this.states;
+      for (k = 0, len2 = ref2.length; k < len2; k++) {
+        s = ref2[k];
+        tbl += "<td><div contenteditable>" + this.formatTrans(this.transitions[s][a]) + "</div></td>";
+      }
+      tbl += "</tr>";
+    }
+    out += "</tbody>";
+    tbl += "</tbody>";
+    document.getElementById("table-left").innerHTML = out;
+    return document.getElementById("state-table").innerHTML = tbl;
   };
 
   return TuringMachine;
 
 })();
 
-var click, createTable, defaultTM, makeStep, parser, runTM, tm;
+var click, conf, createTable, defaultTM, makeStep, parser, runTM, test, tm;
 
 console.log("main file here");
 
 defaultTM = {
   alpha: ["1", "0", "B"],
   input: ["1", "0", "B"],
-  states: 3,
+  states: ["q1", "q2", "q3"],
   blank: "B",
-  initial: 0,
-  final: [2],
+  initial: "q0",
+  final: ["q2"],
   transitions: {
-    "0": {
+    "q0": {
       "1": {
-        next: 1,
+        next: "q1",
         move: "R",
         write: "B"
       },
       "0": {
-        next: 0,
+        next: "q0",
         move: "R",
         write: "B"
       },
       "B": {
-        next: 2,
+        next: "q2",
         move: "N",
         write: "B"
       }
     },
-    "1": {
+    "q1": {
       "1": {
-        next: 0,
+        next: "q0",
         move: "R",
         write: "B"
       },
       "0": {
-        next: 1,
+        next: "q1",
         move: "R",
         write: "B"
       },
       "B": {
-        next: 1,
+        next: "q1",
         move: "R",
         write: "B"
       }
     },
-    "2": {
+    "q2": {
       "1": null,
       "0": null,
       "B": null
@@ -247,7 +287,9 @@ defaultTM = {
 
 tm = new Turing.TuringMachine(defaultTM);
 
-tm.reset("1001100111100101100101111011111110010001110010010010110011010000001000010101011101000110010110110011010111101110110111101010010101110011001111100101000000111010010000000101100010000110010011100001011000000101010001011010001001010101000100101010001000100110100010001000001101011001000101111001000011101111000001101100111011001111010010111000010100011101101000100101010110001101010000001001010000101101101011100011010011000011010111001111101100111101001010000001101100000101110100001010101010111111100010001101101010010011010000010011000000110100010110010000100011010000000100101011110001100011001101001010101000011001110100100010000001000011010011101000000001110111001110100010110110100111010111001001101011000110011110101000010001111101110001011001101010000000011101111010111000110111101011111011000011111001000000000110101111010100100101101010110011000111011011011000110110111011110111111000101000110101111000000010010000011101111011111001110100100111100011001101100111100111111010110111001001101001");
+test = "1001100111100101100101111011111110010001110010010010110011010000001000010101011101000110010110110011010111101110110111101010010101110011001111100101000000111010010000000101100010000110010011100001011000000101010001011010001001010101000100101010001000100110100010001000001101011001000101111001000011101111000001101100111011001111010010111000010100011101101000100101010110001101010000001001010000101101101011100011010011000011010111001111101100111101001010000001101100000101110100001010101010111111100010001101101010010011010000010011000000110100010110010000100011010000000100101011110001100011001101001010101000011001110100100010000001000011010011101000000001110111001110100010110110100111010111001001101011000110011110101000010001111101110001011001101010000000011101111010111000110111101011111011000011111001000000000110101111010100100101101010110011000111011011011000110110111011110111111000101000110101111000000010010000011101111011111001110100100111100011001101100111100111111010110111001001101001";
+
+tm.reset(test);
 
 tm.work();
 
@@ -255,9 +297,15 @@ console.log("Accepts: " + tm.accept);
 
 parser = new Parser.TableParser();
 
-parser.getBasicConfig();
+conf = parser.getBasicConfig();
 
-console.log(parser);
+tm = new Turing.TuringMachine(conf);
+
+tm.reset(test);
+
+tm.work();
+
+console.log("Accepts: " + tm.accept);
 
 click = function(id, func) {
   return document.getElementById(id).addEventListener('click', func);
@@ -265,7 +313,7 @@ click = function(id, func) {
 
 createTable = function(e) {
   e.preventDefault();
-  return parser.buildHTML();
+  return tm.buildHTML();
 };
 
 makeStep = function(e) {
@@ -274,8 +322,13 @@ makeStep = function(e) {
 };
 
 runTM = function(e) {
+  var inp;
   e.preventDefault();
-  return tm.work();
+  tm = new Turing.TuringMachine(parser.getBasicConfig());
+  inp = document.getElementById("input-string").value;
+  tm.reset(inp);
+  tm.work();
+  return console.log("accepts from input: " + tm.accept);
 };
 
 click("build-table", createTable);

@@ -40,8 +40,8 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 			</div>
 		</div>
 	</section>
-	
-	
+
+
 	<!-- Working Part -->
 	<section class="working">
 		<div class="row">
@@ -60,10 +60,10 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 					<div class="small-6 columns">
 						<a class="expanded button step-button" id="step-button" href="#">STEP</a>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="small-12 small-centered medium-8 columns">
 				<div class="row">
@@ -76,19 +76,29 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 						<input type="text" name="speed" id="speed" placeholder="100">
 					</div>
 				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<label class="input-label speed-label" for="input-string">
+							Input String:
+						</label>
+					</div>
+					<div class="small-8 columns speed-holder">
+						<input type="text" name="input-string" id="input-string" placeholder="100100101">
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
-	
-	
-	
+
+
+
 	<!-- Configuration Part -->
 	<section class="config" id="config">
 		<div class="row">
 			<div class="small-12 small-centered medium-8 columns">
-				<p>The following Turing machine can be formally defined as a 7-tuple M = &#x3008;Q, Γ, b, Σ, δ, q0, F&#x3009;</p>
+				<p>The following Turing machine can be formally defined as a 7-tuple M = &lt;Q, Γ, b, Σ, δ, q0, F&gt;</p>
 				<p>Configure your own machine or use the example:</p>
-				
+
 				<!-- All States input -->
 				<div class="row">
 					<div class="small-4 columns">
@@ -101,7 +111,7 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 					</div>
 				</div>
 				<!-- End All States -->
-				
+
 				<!-- Alphabet input -->
 				<div class="row">
 					<div class="small-4 columns">
@@ -112,9 +122,9 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 					<div class="small-8 columns config-holder">
 						<input type="text" name="alphabet" id="alphabet" placeholder="0, 1, B">
 					</div>
-				</div>		
+				</div>
 				<!-- End Alphabet -->
-				
+
 				<!-- Blank symbol input -->
 				<div class="row">
 					<div class="small-4 columns">
@@ -127,7 +137,7 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 					</div>
 				</div>
 				<!-- End Blank Symbol -->
-		
+
 				<!-- Input symbols input -->
 				<div class="row">
 					<div class="small-4 columns">
@@ -140,7 +150,7 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 					</div>
 				</div>
 				<!-- End Input symbols -->
-								
+
 				<!-- Initial state input -->
 				<div class="row">
 					<div class="small-4 columns">
@@ -166,18 +176,18 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 					</div>
 				</div>
 				<!-- End Final States -->
-				
+
 				<hr>
-				
+
 				<a class="expanded button" id="build-table" href="#">CREATE TABLE</a>
-				
+
 				<hr>
-				
+
 				<!-- Start state table -->
 				<div class="table-describe">
 					<p><b>δ -> Transition function.</b> The transition functions are displayed in the table below:</p>
 				</div>
-				
+
 				<div class="row">
 					<div class="small-3 columns table-holder">
 						<table border="1" class="tm-desc-table" id="table-left">
@@ -186,10 +196,10 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 							</thead>
 							<tbody>
 								<tr>
-									<td>0</td>
+									<td>1</td>
 								</tr>
 								<tr>
-									<td>1</td>
+									<td>0</td>
 								</tr>
 								<tr>
 									<td>B</td>
@@ -204,38 +214,26 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 									<th colspan="1000">States</th>
 								</tr>
 								<tr>
+									<th><div>q0</div></th>
 									<th><div>q1</div></th>
 									<th><div>q2</div></th>
-									<th><div>q3</div></th>
-									<th><div>q4</div></th>
-									<th><div>q5</div></th>
-									<th><div>q6</div></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
+									<td><div contenteditable>q1, R, B</div></td>
+									<td><div contenteditable>q0, R, B</div></td>
+									<td><div contenteditable>-</div></td>
 								</tr>
 								<tr>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
+									<td><div contenteditable>q0, R, B</div></td>
+									<td><div contenteditable>q1, R, B</div></td>
+									<td><div contenteditable>-</div></td>
 								</tr>
 								<tr>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
-									<td><div contenteditable>1, 0, R</div></td>
+									<td><div contenteditable>q2, N, B</div></td>
+									<td><div contenteditable>q1, R, B</div></td>
+									<td><div contenteditable>-</div></td>
 								</tr>
 							</tbody>
 						</table>
@@ -244,7 +242,7 @@ Donec nec lectus commodo ex ornare dictum. Sed congue imperdiet risus, et congue
 			</div>
 		</div>
 	</section>
-	
+
 	<script src="turing.js"></script>
 </body>
 </html>

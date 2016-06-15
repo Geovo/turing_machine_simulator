@@ -69,9 +69,10 @@ h1, h2, h3, h4, h5, h6 {
     background: #559999; }
 
 .speed-label {
-  font-size: 20px;
+  font-size: 1.1em;
   color: #EEEEDD;
-  text-align: right; }
+  text-align: right;
+  line-height: 40px; }
 
 .speed {
   width: 100%; }

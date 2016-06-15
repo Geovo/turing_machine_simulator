@@ -7,32 +7,43 @@ class Parser.TableParser
 		@initial = 0
 		@final = []
 		@transitions = {}
-	
+
 	getValue: (id) =>
 		document.getElementById(id).getAttribute "value"
-	
+
 	getBasicConfig: =>
-		@allStates = (@getValue("states") || "0, 1, 2").split(/\s*,\s*/)
+		@allStates = (@getValue("states") || "q0, q1, q2").split(/\s*,\s*/)
 		@alpha = (@getValue("alphabet") || "0, 1, B").split(/\s*,\s*/)
 		@blank = @getValue("blank") || "B"
 		@inputs = (@getValue("inputs") || "0, 1, B").split(/\s*,\s*/)
-		@initial = @getValue("initial") || [0]
-		@final = (@getValue("final") || "2").split(/\s*,\s*/)
-		
+		@initial = @getValue("initial") || ["q0"]
+		@final = (@getValue("final") || "q2").split(/\s*,\s*/)
+
+		# create return object here
+		ret = {
+			states: @allStates,
+			alpha: @alpha,
+			blank: @blank,
+			input: @inputs,
+			initial: @initial,
+			final: @final
+		}
+
 		# now parse the table
 		#first, get the left table
 		inpSymbols = []
 		inputsTable = document.getElementById("table-left").getElementsByTagName("tbody")[0].getElementsByTagName("tr")
 		for row in inputsTable
 			inpSymbols.push row.getElementsByTagName("td")[0].innerHTML
-			
+
+		# parse the state names
 		table = document.getElementById("state-table")
 		tbodyRows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
 		theads = table.getElementsByTagName("thead")[0].getElementsByTagName("tr")[1].getElementsByTagName("th")
 		stateNames = []
 		for nameSpan in theads
 			stateNames.push nameSpan.getElementsByTagName("div")[0].innerHTML
-		
+
 		# now we have the corresponding state Names
 		# let's parse the transitions
 		inp = 0
@@ -52,10 +63,14 @@ class Parser.TableParser
 					toState[currInp] = null
 					@transitions[currState] = toState
 					continue
-					
-				txt = txt.split /\s*,\s*/
+
+				# handle the absence of a transition
+				if txt == "-"
+					t = null
+				else
+					txt = txt.split /\s*,\s*/
+					t = {next: txt[0], move: txt[1], write: txt[2]}
 				console.log "txt: ", txt
-				t = {next: txt[0], move: txt[1], write: txt[2]}
 				temp.push t
 				# update the state
 				state = (state + 1) % stateNames.length
@@ -63,11 +78,8 @@ class Parser.TableParser
 				toState = @transitions[currState] || {}
 				toState[currInp] = t
 				@transitions[currState] = toState
-			
+
 			inp++
-		console.log("transitions: ", @transitions)
-		return @transitions
-	
-	
-	buildHTML: ->
-		console.log "parser builds table"
+		#console.log("transitions: ", @transitions)
+		ret.transitions = @transitions
+		return ret
